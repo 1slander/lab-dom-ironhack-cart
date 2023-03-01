@@ -72,6 +72,8 @@ function createProduct() {
 <td class="action">
   <button class="btn btn-remove">Remove</button>
 </td>`;
+  const removeBtn = document.querySelectorAll(".btn-remove");
+
   table[0].appendChild(trTag);
   if (nameValue && priceValue) {
     name.value = "";
@@ -85,9 +87,9 @@ window.addEventListener("load", () => {
 
   //... your code goes here
   const removeBtn = document.querySelectorAll(".btn-remove");
-  for (let i = 0; i < removeBtn.length; i++) {
-    removeBtn[i].addEventListener("click", removeProduct);
-  }
+  removeBtn.forEach((button) => {
+    button.addEventListener("click", removeProduct);
+  });
 
   const createBtn = document.getElementById("create");
   createBtn.addEventListener("click", createProduct);
