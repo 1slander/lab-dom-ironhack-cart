@@ -60,8 +60,10 @@ function createProduct() {
   let priceValue = price.value;
   const table = document.getElementsByTagName("tbody");
   const trTag = document.createElement("tr");
-  trTag.setAttribute("class", "product");
-  trTag.innerHTML = `<td class="name">
+  trTag.className = "product";
+  trTag.innerHTML = `
+  <tr class='product'>
+  <td class="name">
   <span>${nameValue}</span>
 </td>
 <td class="price">$<span>${priceValue}</span></td>
@@ -71,14 +73,15 @@ function createProduct() {
 <td class="subtotal">$<span>0</span></td>
 <td class="action">
   <button class="btn btn-remove">Remove</button>
-</td>`;
-  const removeBtn = document.querySelectorAll(".btn-remove");
-
+</td>
+</tr>`;
   table[0].appendChild(trTag);
   if (nameValue && priceValue) {
     name.value = "";
     price.value = 0;
   }
+  const removeBtn = trTag.querySelector(".btn-remove");
+  removeBtn.addEventListener("click", removeProduct);
 }
 
 window.addEventListener("load", () => {
